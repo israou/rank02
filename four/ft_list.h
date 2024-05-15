@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_size.c                                     :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 23:45:03 by ichaabi           #+#    #+#             */
-/*   Updated: 2024/05/14 17:37:22 by ichaabi          ###   ########.fr       */
+/*   Created: 2024/05/14 22:13:40 by ichaabi           #+#    #+#             */
+/*   Updated: 2024/05/14 22:13:42 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#ifndef FT_LIST_H
+#define FT_LIST_H
 
-int	ft_list_size(t_list *begin_list)
+#include <libc.h>
+
+typedef struct	s_list
 {
-	if (begin_list == 0)
-		return (0);
-	else
-		return (1 + ft_list_size(begin_list->next));
-}
-int	ft_list_size(t_list *begin_list)
-{
-	if (begin_list == 0)
-		return (0);
-	else
-		return (1 + ft_list_size(begin_list->next));
-}
+	struct s_list	*next;
+	void			*data;
+}					t_list;
+
+#endif

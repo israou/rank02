@@ -1,46 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rstrt_capitalizer.c                                :+:      :+:    :+:   */
+/*   rev_wstr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 00:00:25 by ichaabi           #+#    #+#             */
-/*   Updated: 2024/05/14 21:31:46 by ichaabi          ###   ########.fr       */
+/*   Created: 2024/05/15 19:36:59 by ichaabi           #+#    #+#             */
+/*   Updated: 2024/05/15 19:50:06 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libc.h>
 
-void	rstr_capitalizer(char *str)
+int main(int ac, char**av)
 {
 	int i = 0;
+	int ext = 0;
 
-	while (str[i])
+	if (ac == 2)
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] += 32;
-		if ((str[i] >= 'a' && str[i] <= 'z') && (str[i + 1] == ' ' || str[i + 1] == '\t' || str[i + 1] == '\0'))
-			str[i] -= 32;
-		write(1, &str[i++], 1);
-	}
-}
-
-int main(int ac, char **av)
-{
-	int i;
-
-	if (ac != 2)
-		write(1, "\n", 1);
-	else
-	{
-		i = 1;
-		while (i < ac)
+		while (av[1][i])
+			i++;
+		i--;
+		while (i >= 0)
 		{
-			rstr_capitalizer(av[i]);
-			write(1, "\n", 1);
-			i += 1;
+			if (i >= 0 && (av[1][i] == ' ' || av[1][i] == '\t'))
+			{
+				write(1, &av[1][i], 1);
+				i--;
+			}
+			while (i >= 0 && av[1][i] != ' ' && av[1][i] != '\t')
+			{
+				i--;
+				ext = i + 1;
+			}
+			while (av[1][ext] && av[1][ext] != ' ' && av[1][ext] != '\t')
+			{
+				write(1, &av[1][ext], 1);
+				ext++;
+			}
 		}
 	}
-	return (0);
+	write(1, "\n", 1);
 }

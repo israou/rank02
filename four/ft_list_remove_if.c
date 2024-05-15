@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_size.c                                     :+:      :+:    :+:   */
+/*   ft_list_remove_if.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 23:45:03 by ichaabi           #+#    #+#             */
-/*   Updated: 2024/05/14 17:37:22 by ichaabi          ###   ########.fr       */
+/*   Created: 2024/05/14 22:08:56 by ichaabi           #+#    #+#             */
+/*   Updated: 2024/05/15 19:35:54 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-int	ft_list_size(t_list *begin_list)
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 {
-	if (begin_list == 0)
-		return (0);
-	else
-		return (1 + ft_list_size(begin_list->next));
-}
-int	ft_list_size(t_list *begin_list)
-{
-	if (begin_list == 0)
-		return (0);
-	else
-		return (1 + ft_list_size(begin_list->next));
+	t_list *head = *begin_list;
+
+	if (begin_list == NULL || *begin_list == NULL)
+		return (NULL);
+	if (cmp(head->data, data_ref))
+	{
+		*begin_list = head->next;
+		free(head);
+		ft_list_remove_if(begin_list, data_ref, cmp);
+	}
+	head = *begin_list;
+	ft_list_remove_if(&head->next, data_ref, cmp);
 }
