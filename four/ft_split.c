@@ -6,7 +6,7 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 19:52:48 by ichaabi           #+#    #+#             */
-/*   Updated: 2024/05/15 20:55:06 by ichaabi          ###   ########.fr       */
+/*   Updated: 2024/05/18 17:43:37 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,3 +73,14 @@ int main(int ac, char **av)
 		i++;
 	}
 }
+
+char	**ft_strncpy(int *s1, int *s2, int n)
+{
+	int i  = -1;
+
+	while (++i < n && s2[i])
+		s1[i] = s2[i];
+	s1[i] = '\0';
+	return (s1);
+}
+

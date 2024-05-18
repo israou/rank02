@@ -6,7 +6,7 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 23:58:26 by ichaabi           #+#    #+#             */
-/*   Updated: 2024/05/14 00:05:54 by ichaabi          ###   ########.fr       */
+/*   Updated: 2024/05/18 22:22:28 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_itoa(int nbr)
 		nbr_cp /= 10;
 		len++;
 	}
-	str = (char *)malloc(len + 1);
+	str = (char *)malloc(sizeof(char *) * (len + 1));
 	if (!str)
 		return (NULL);
 	str[len] = '\0';
