@@ -1,64 +1,48 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rostring.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 23:06:01 by ichaabi           #+#    #+#             */
-/*   Updated: 2024/05/15 23:14:42 by ichaabi          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <libc.h>
-
-void	write_word(char *start, char *end)
-{
-	while (start < end)
-	{
-		write(1, start, 1);
-		start++;
-	}
-}
 
 int main(int ac, char **av)
 {
-	char *str;
-	char *first_word_start;
-	char *first_word_end;
+	int i = 0;
+	int k = 0;
+	char *s;
 
-	if (ac > 1)
+	if (ac >= 2)
 	{
-		str = av[1];
-		while (*str == ' ' || *str == '\t')
-			str++;
-		first_word_start = str;
-		while (*str && *str != ' ' && *str != '\t')
-			str++;
-		first_word_end = str;
-		while (*str == ' ' || *str == '\t')
-			str++;
-		if (*str)
+		s = av[1];
+		while (av[1][i] && (av[1][i] == ' ' || av[1][i] == '\t'))
+			i++;
+		while (av[1][i] && av[1][i] != ' ' && av[1][i] != '\t')
+			i++;
+		while (av[1][i] && (av[1][i] == ' ' || av[1][i] == '\t'))
+			i++;
+
+		while (av[1][i])
 		{
-			while (*str)
+			k = 1;
+			if (av[1][i] == ' ')
 			{
-				if (*str == ' ' || *str == '\t')
+				while (av[1][i] == ' ')
+					i++;
+				if (av[1][i] == '\0')
 				{
-					while (*str == ' ' || *str == '\t')
-						str++;
-					if (*str)
-						write(1, " ", 1);
+					break;
 				}
-				else
-				{
-					write(1, str, 1);
-					str++;
-				}
+				write(1, " ", 1);
 			}
-			write(1, " ", 1);
+			write(1, &av[1][i], 1);
+			i++;
 		}
-		write_word(first_word_start, first_word_end);
+
+		i = 0;
+		if (k == 1)
+			write(1, " ", 1);
+		while (s[i] && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		while (s[i] && s[i] != ' ' && s[i] != '\t')
+		{
+			write(1, &s[i], 1);
+			i++;
+		}
 	}
 	write(1, "\n", 1);
-	return (0);
 }

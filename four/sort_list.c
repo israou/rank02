@@ -6,7 +6,7 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:18:08 by ichaabi           #+#    #+#             */
-/*   Updated: 2024/05/15 17:51:50 by ichaabi          ###   ########.fr       */
+/*   Updated: 2024/05/20 18:32:00 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
 	t_list *head;
 
 	head = lst;
-	while (lst)
+	while (lst->next)
 	{
 		if (((*cmp)(lst->data, lst->next->data)) == 0)
 		{

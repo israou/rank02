@@ -6,15 +6,17 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:18:32 by ichaabi           #+#    #+#             */
-/*   Updated: 2024/05/15 15:52:02 by ichaabi          ###   ########.fr       */
+/*   Updated: 2024/05/21 15:28:41 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	ft_list_foreach(t_list *begin_list, void(*f)(void *))
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
-	t_list *head = begin_list;
+	t_list *head;
+
+	head = begin_list;
 	while (head)
 	{
 		(*f)(head->data);

@@ -6,7 +6,7 @@
 /*   By: ichaabi <ichaabi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:57:35 by ichaabi           #+#    #+#             */
-/*   Updated: 2024/05/09 21:11:23 by ichaabi          ###   ########.fr       */
+/*   Updated: 2024/05/20 18:54:11 by ichaabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ int main(int ac, char **av)
 		}
 		put_nbr(sum);
 	}
-	write(1, "\n", 1);
-	return (0);
+	else
+	{
+		write(1, "0", 1);
+		write(1, "\n", 1);
+	}
 }
